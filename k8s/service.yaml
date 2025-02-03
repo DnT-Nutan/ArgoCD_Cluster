@@ -8,6 +8,6 @@ spec:
   ports:
     - port: 80
       targetPort: 80  # Ensure targetPort is set (optional based on your setup)
-      nodePort: 30080  # Optional: specify a NodePort if you want to control the port
+      nodePort: 30081  # Optional: specify a NodePort if you want to control the port
   selector:
     app: deploy-nginx  # Ensure this matches the label of your Deployment
