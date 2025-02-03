@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: argocdapplication
+  namespace: argocdapplication  # Namespace added here
   labels:
     app: nginx
 spec:
@@ -19,7 +20,7 @@ spec:
         image: nginx:latest
         ports:
         - containerPort: 80
-        volumeMounts:  # Correct indentation here
+        volumeMounts:
         - mountPath: /usr/share/nginx/html
           name: nginx-storage
       volumes:
