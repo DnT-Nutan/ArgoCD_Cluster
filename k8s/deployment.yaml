@@ -20,10 +20,3 @@ spec:
         image: nginx:latest
         ports:
         - containerPort: 80
-        volumeMounts:
-        - mountPath: /usr/share/nginx/html
-          name: nginx-storage
-      volumes:
-      - name: nginx-storage
-        persistentVolumeClaim:
-          claimName: new-pvc
