@@ -4,10 +4,9 @@ metadata:
   name: nginx-service
   namespace: default  # Namespace added here
 spec:
-  type: NodePort
+  type: LoadBalancer  # Changed from NodePort to LoadBalancer
   ports:
-    - port: 80
-      targetPort: 80  # Ensure targetPort is set (optional based on your setup)
-      nodePort: 30081  # Optional: specify a NodePort if you want to control the port
+    - port: 80         # The port exposed by the service
+      targetPort: 80    # Port on the container that the service will forward traffic to
   selector:
     app: deploy-nginx  # Ensure this matches the label of your Deployment
