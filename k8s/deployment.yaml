@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  labels:
+    app: nginx
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: deploy-nginx
+  template:
+    metadata:
+      labels:
+        app: deploy-nginx
+    spec:
+      containers:
+      - name: deploy-nginx
+        image: nginx:latest
+        ports:
+        - containerPort: 80
+        volumeMounts:  # Correct indentation here
+        - mountPath: /usr/share/nginx/html
+          name: nginx-storage
+      volumes:
+      - name: nginx-storage
+        persistentVolumeClaim:
+          claimName: new-pvc
